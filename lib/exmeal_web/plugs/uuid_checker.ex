@@ -4,7 +4,9 @@ defmodule ExmealWeb.Plugs.UUIDChecker do
   alias Ecto.UUID
   alias Plug.Conn
 
+  # coveralls-ignore-start
   def init(options), do: options
+  # coveralls-ignore-stop
 
   def call(%Conn{params: %{"id" => id}} = connection, _options) do
     case UUID.cast(id) do

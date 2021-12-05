@@ -1,7 +1,9 @@
-defmodule Exmeal.MealsControllerTest do
+defmodule ExmealWeb.MealsControllerTest do
   use ExmealWeb.ConnCase, async: true
 
   import Exmeal.Factory
+
+  alias ExmealWeb.MealsController
 
   describe "create/2" do
     # test "when all params are valid, creates a meal", %{conn: conn} do

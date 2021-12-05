@@ -34,4 +34,21 @@ defmodule Exmeal.Meals.GetTest do
               }} = response
     end
   end
+
+  describe "all/0" do
+    test "returns all meals" do
+      params = build(:meal_params)
+
+      {_ok, meal} = Create.call(params)
+
+      {_ok, response} = Get.all()
+
+      assert %Meal{
+               calories: 200,
+               date: ~N[2021-12-05 03:05:24],
+               description: "Potato Chips",
+               id: _id
+             } = Map.get(response, meal.id)
+    end
+  end
 end
