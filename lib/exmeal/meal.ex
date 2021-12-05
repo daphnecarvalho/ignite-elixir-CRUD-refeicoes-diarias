@@ -9,7 +9,7 @@ defmodule Exmeal.Meal do
 
   @derive {Jason.Encoder, only: [:id, :description, :calories, :date]}
 
-  # %Rockelivery.User{}
+  # %Exmeal.Meal{}
   schema "meals" do
     field :description, :string
     field :calories, :integer
@@ -23,6 +23,6 @@ defmodule Exmeal.Meal do
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:description, max: 255)
-    |> validate_length(:calories, greater_than: 0)
+    |> validate_number(:calories, greater_than: 0)
   end
 end
