@@ -5,136 +5,135 @@ defmodule Exmeal.MealsControllerTest do
 
   describe "create/2" do
     # test "when all params are valid, creates a meal", %{conn: conn} do
-    #   params = %{
-    #     description: "Potato Chips",
-    #     calories: 200,
-    #     date: DateTime.utc_now(),
-    #   }
+    #   params = build(:meal_params)
 
     #   response =
     #     conn
     #     |> post(Routes.meals_path(conn, :create, params))
     #     |> json_response(:created)
 
-    #   assert "" = response
+    #   assert %{
+    #            "message" => "Meal created!",
+    #            "meal" => %{
+    #              "description" => "Potato Chips",
+    #              "calories" => 200,
+    #              "date" => ~N[2021-12-05 03:05:24],
+    #              "id" => _id
+    #            }
+    #          } = response
     # end
 
-  #   test "when there are invalid params, returns an error", %{conn: conn} do
-  #     params = %{"description" => "Banana"}
+    test "when there are invalid params, returns an error", %{conn: conn} do
+      params = %{"description" => "Banana"}
 
-  #     expected_response = %{
-  #       "message" => %{
-  #         "calories" => ["can't be blank"],
-  #         "date" => ["can't be blank"]
-  #       }
-  #     }
+      expected_response = %{
+        "message" => %{
+          "calories" => ["can't be blank"],
+          "date" => ["can't be blank"]
+        }
+      }
 
-  #     response =
-  #       conn
-  #       |> post(Routes.meals_path(conn, :create, params))
-  #       |> json_response(:bad_request)
+      response =
+        conn
+        |> post(Routes.meals_path(conn, :create, params))
+        |> json_response(:bad_request)
 
-  #     assert response == expected_response
-  #   end
+      assert response == expected_response
+    end
   end
 
-  # describe "delete/2" do
-  #   test "when id exist, delete the meal", %{conn: conn} do
-  #     params = build(:meal_params)
+  describe "delete/2" do
+    test "when id exist, delete the meal", %{conn: conn} do
+      id = "2423e0d9-9d0d-4883-bce1-4d625cb92c2e"
+      insert(:meal)
 
-  #     {:ok, meal} = Exmeal.create_meal(params)
+      response =
+        conn
+        |> delete(Routes.meals_path(conn, :delete, id))
+        |> response(:no_content)
 
-  #     id = meal.id
+      assert "" = response
+    end
 
-  #     response =
-  #       conn
-  #       |> delete(Routes.meals_path(conn, :delete, id))
-  #       |> response(:no_content)
+    test "when id not exist, return an error", %{conn: conn} do
+      id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
 
-  #     assert "" = response
-  #   end
+      response =
+        conn
+        |> delete(Routes.meals_path(conn, :delete, id))
+        |> json_response(:not_found)
 
-  #   test "when id not exist, return an error", %{conn: conn} do
-  #     id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
+      assert %{"message" => "Meal not found!"} = response
+    end
+  end
 
-  #     response =
-  #       conn
-  #       |> delete(Routes.meals_path(conn, :delete, id))
-  #       |> json_response(:not_found)
+  describe "update/2" do
+    test "when id exist, update the meal", %{conn: conn} do
+      params = build(:meal_params)
 
-  #     assert %{
-  #              "message" => "Meal not found!"
-  #            } = response
-  #   end
-  # end
+      {:ok, meal} = Exmeal.create_meal(params)
 
-  # describe "update/2" do
-  #   test "when id exist, update the meal", %{conn: conn} do
-  #     params = build(:meal_params)
+      id = meal.id
 
-  #     {:ok, meal} = Exmeal.create_meal(params)
+      response =
+        conn
+        |> put(Routes.meals_path(conn, :update, id))
+        |> json_response(:ok)
 
-  #     id = meal.id
+      assert %{
+               "meal" => %{
+                 "calories" => 200,
+                 "date" => "2021-12-05T03:05:24",
+                 "description" => "Potato Chips",
+                 "id" => _id
+               }
+             } = response
+    end
 
-  #     response =
-  #       conn
-  #       |> put(Routes.meals_path(conn, :update, id))
-  #       |> json_response(:ok)
+    test "when not exist id, return an error", %{conn: conn} do
+      id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
 
-  #     assert %{
-  #              "meal" => %{
-  #                "calories" => 20,
-  #                "date" => ~N[2021-12-05 03:05:24],
-  #                "description" => "Banana",
-  #                "id" => _id
-  #              }
-  #            } = response
-  #   end
+      response =
+        conn
+        |> put(Routes.meals_path(conn, :update, id))
+        |> json_response(:not_found)
 
-  #   test "when not exist id, return an error", %{conn: conn} do
-  #     id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
+      assert %{"message" => "Meal not found!"} = response
+    end
+  end
 
-  #     response =
-  #       conn
-  #       |> put(Routes.meals_path(conn, :update, id))
-  #       |> json_response(:not_found)
+  describe "get/2" do
+    test "when id exist, return the meal", %{conn: conn} do
+      params = build(:meal_params)
 
-  #     assert %{"message" => "Meal not found!"} = response
-  #   end
-  # end
+      {:ok, meal} = Exmeal.create_meal(params)
 
-  # describe "get/2" do
-  #   test "when id exist, return the meal", %{conn: conn} do
-  #     params = build(:meal_params)
+      id = meal.id
 
-  #     {:ok, meal} = Exmeal.create_meal(params)
+      response =
+        conn
+        |> get(Routes.meals_path(conn, :show, id))
+        |> json_response(:ok)
 
-  #     id = meal.id
+      assert %{
+               "meal" => %{
+                 "calories" => 200,
+                 "date" => "2021-12-05T03:05:24",
+                 "description" => "Potato Chips",
+                 "id" => _id
+               }
+             } = response
+    end
 
-  #     response =
-  #       conn
-  #       |> get(Routes.meals_path(conn, :show, id))
-  #       |> json_response(:ok)
+    test "when id not exist, return an error", %{conn: conn} do
+      id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
 
-  #     assert %{
-  #              "meal" => %{
-  #                "calories" => 20,
-  #                "date" => ~N[2021-12-05 03:05:24],
-  #                "description" => "Banana",
-  #                "id" => _id
-  #              }
-  #            } = response
-  #   end
+      response =
+        conn
+        |> get(Routes.meals_path(conn, :update, id))
+        |> json_response(:not_found)
 
-  #   test "when id not exist, return an error", %{conn: conn} do
-  #     id = "5e694bc0-78fc-4600-bcd0-0733b7540a6e"
-
-  #     response =
-  #       conn
-  #       |> get(Routes.meals_path(conn, :update, id))
-  #       |> json_response(:not_found)
-
-  #     assert %{"message" => "Meal not found!"} = response
-  #   end
-  # end
+      assert %{"message" => "Meal not found!"} = response
+    end
+  end
 end

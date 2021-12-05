@@ -18,11 +18,11 @@ defmodule Exmeal.Meals.Get do
     {:ok, meals}
   end
 
-  def gel_all_meals([%Meal{id: id} = meal | tail], acc) do
+  defp gel_all_meals([%Meal{id: id} = meal | tail], acc) do
     acc = Map.put_new(acc, id, meal)
 
     gel_all_meals(tail, acc)
   end
 
-  def gel_all_meals([], acc), do: acc
+  defp gel_all_meals([], acc), do: acc
 end
