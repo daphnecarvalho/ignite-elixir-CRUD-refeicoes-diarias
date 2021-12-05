@@ -5,7 +5,8 @@ defmodule Exmeal do
   alias Exmeal.Meals.Update, as: UpdateMeal
 
   defdelegate create_meal(params), to: CreateMeal, as: :call
-  defdelegate delete_meal(params), to: DeleteMeal, as: :call
-  defdelegate get_meal_by_id(params), to: GetMeal, as: :by_id
+  defdelegate delete_meal(id), to: DeleteMeal, as: :call
+  defdelegate get_all_meals(), to: GetMeal, as: :all
+  defdelegate get_meal_by_id(id), to: GetMeal, as: :by_id
   defdelegate update_meal(params), to: UpdateMeal, as: :call
 end

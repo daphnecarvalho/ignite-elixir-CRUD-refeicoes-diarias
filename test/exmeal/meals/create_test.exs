@@ -19,10 +19,11 @@ defmodule Exmeal.Meals.CreateTest do
                 id: _id
               }} = response
     end
+
     test "when there are invalid params, returns an error" do
       params = %{
         calories: 20,
-        date: ~D[2001-05-02],
+        date: ~D[2001-05-02]
       }
 
       response = Exmeal.create_meal(params)

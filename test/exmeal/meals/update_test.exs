@@ -8,6 +8,7 @@ defmodule Exmeal.Meals.UpdateTest do
         date: ~D[2001-05-02],
         description: "Banana"
       }
+
       {_ok, meal} = Exmeal.create_meal(params)
 
       response = Exmeal.update_meal(%{"id" => meal.id, "calories" => 25})
