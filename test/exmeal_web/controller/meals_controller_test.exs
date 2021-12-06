@@ -6,24 +6,24 @@ defmodule ExmealWeb.MealsControllerTest do
   alias ExmealWeb.MealsController
 
   describe "create/2" do
-    # test "when all params are valid, creates a meal", %{conn: conn} do
-    #   params = build(:meal_params)
+    test "when all params are valid, creates a meal", %{conn: conn} do
+      params = build(:meal_params)
 
-    #   response =
-    #     conn
-    #     |> post(Routes.meals_path(conn, :create, params))
-    #     |> json_response(:created)
+      response =
+        conn
+        |> post(Routes.meals_path(conn, :create, params))
+        |> json_response(:created)
 
-    #   assert %{
-    #            "message" => "Meal created!",
-    #            "meal" => %{
-    #              "description" => "Potato Chips",
-    #              "calories" => 200,
-    #              "date" => ~N[2021-12-05 03:05:24],
-    #              "id" => _id
-    #            }
-    #          } = response
-    # end
+      assert %{
+               "message" => "Meal created!",
+               "meal" => %{
+                 "description" => "Potato Chips",
+                 "calories" => 200,
+                 "date" => ~N[2021-12-05 03:05:24],
+                 "id" => _id
+               }
+             } = response
+    end
 
     test "when there are invalid params, returns an error", %{conn: conn} do
       params = %{"description" => "Banana"}
