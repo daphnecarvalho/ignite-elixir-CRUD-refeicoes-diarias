@@ -3,8 +3,6 @@ defmodule ExmealWeb.MealsControllerTest do
 
   import Exmeal.Factory
 
-  alias ExmealWeb.MealsController
-
   describe "create/2" do
     test "when all params are valid, creates a meal", %{conn: conn} do
       params = build(:meal_params)
@@ -66,6 +64,30 @@ defmodule ExmealWeb.MealsControllerTest do
         |> json_response(:not_found)
 
       assert %{"message" => "Meal not found!"} = response
+    end
+  end
+
+  describe "index/2" do
+    test "returns all meals", %{conn: conn} do
+      params = build(:meal_params)
+
+      {:ok, _meal} = Exmeal.create_meal(params)
+
+      response =
+        conn
+        |> get(Routes.meals_path(conn, :index))
+        |> json_response(:ok)
+
+      assert %{
+               "meals" => %{
+                 "0" => %{
+                   "calories" => 200,
+                   "date" => "2021-12-05T03:05:24",
+                   "description" => "Potato Chips",
+                   "id" => _id
+                 }
+               }
+             } = response
     end
   end
 

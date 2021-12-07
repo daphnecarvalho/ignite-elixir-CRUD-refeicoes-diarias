@@ -22,7 +22,6 @@ defmodule ExmealWeb.MealsController do
     end
   end
 
-  # coveralls-ignore-start
   def index(connection, _params) do
     with {:ok, meals} <- Exmeal.get_all_meals() do
       connection
@@ -30,7 +29,6 @@ defmodule ExmealWeb.MealsController do
       |> render("index.json", meals: meals)
     end
   end
-  # coveralls-ignore-stop
 
   def show(connection, %{"id" => id}) do
     with {:ok, %Meal{} = meal} <- Exmeal.get_meal_by_id(id) do

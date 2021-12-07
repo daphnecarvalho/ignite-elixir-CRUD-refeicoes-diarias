@@ -13,16 +13,17 @@ defmodule Exmeal.Meals.Get do
   def all() do
     meals =
       Repo.all(Meal)
-      |> gel_all_meals(%{})
+      |> gel_all_meals(%{}, 0)
 
     {:ok, meals}
   end
 
-  defp gel_all_meals([%Meal{id: id} = meal | tail], acc) do
-    acc = Map.put_new(acc, id, meal)
+  defp gel_all_meals([%Meal{} = meal | tail], acc, id_acc) do
+    acc = Map.put_new(acc, id_acc, meal)
 
-    gel_all_meals(tail, acc)
+    id_acc = id_acc + 1
+    gel_all_meals(tail, acc, id_acc)
   end
 
-  defp gel_all_meals([], acc), do: acc
+  defp gel_all_meals([], acc, _id_acc), do: acc
 end

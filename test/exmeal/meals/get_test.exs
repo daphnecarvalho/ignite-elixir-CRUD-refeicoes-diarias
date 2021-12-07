@@ -39,7 +39,7 @@ defmodule Exmeal.Meals.GetTest do
     test "returns all meals" do
       params = build(:meal_params)
 
-      {_ok, meal} = Create.call(params)
+      {_ok, _meal} = Create.call(params)
 
       {_ok, response} = Get.all()
 
@@ -48,7 +48,7 @@ defmodule Exmeal.Meals.GetTest do
                date: ~N[2021-12-05 03:05:24],
                description: "Potato Chips",
                id: _id
-             } = Map.get(response, meal.id)
+             } = Map.get(response, 0)
     end
   end
 end
