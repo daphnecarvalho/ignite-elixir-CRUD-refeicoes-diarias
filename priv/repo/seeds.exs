@@ -9,7 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-alias Exmeal.Meal
+alias Exmeal.{Meal, Repo}
 
 meal = %Meal{
   description: "Potato Chips",
