@@ -16,6 +16,14 @@ config :exmeal, ExmealWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :exmeal, Exmeal.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "5"),
+  ssl: true,
+  url: System.get_env("DATABASE_URL"),
+  show_sensitive_data_on_connection_error: true,
+  database: "exmeal",
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
