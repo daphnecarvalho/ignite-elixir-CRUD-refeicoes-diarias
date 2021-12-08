@@ -22,7 +22,7 @@ config :exmeal, Exmeal.Repo,
   ssl: true,
   url: System.get_env("DATABASE_URL"),
   show_sensitive_data_on_connection_error: true,
-  database: "exmeal",
+  database: "exmeal"
 
 # ## SSL Support
 #
