@@ -1,44 +1,8 @@
 {
   "excluded": [],
-  "failed": [
-    {
-      "describe": "create/2",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
-      "line": 7,
-      "module": "Elixir.ExmealWeb.MealsControllerTest",
-      "test": "test create/2 when all params are valid, creates a meal"
-    }
-  ],
+  "failed": [],
   "invalid": [],
   "passed": [
-    {
-      "describe": "call/1",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/delete_test.exs",
-      "line": 26,
-      "module": "Elixir.Exmeal.Meals.DeleteTest",
-      "test": "test call/1 when an invalid id is given, returns an error"
-    },
-    {
-      "describe": "call/1",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/delete_test.exs",
-      "line": 10,
-      "module": "Elixir.Exmeal.Meals.DeleteTest",
-      "test": "test call/1 when a valid id is given, returns the meal"
-    },
-    {
-      "describe": "call/1",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/update_test.exs",
-      "line": 26,
-      "module": "Elixir.Exmeal.Meals.UpdateTest",
-      "test": "test call/1 when an invalid id is given, returns an error"
-    },
-    {
-      "describe": "call/1",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/update_test.exs",
-      "line": 10,
-      "module": "Elixir.Exmeal.Meals.UpdateTest",
-      "test": "test call/1 when a valid id is given, returns the meal"
-    },
     {
       "describe": "get_all_meals/0",
       "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/exmeal_test.exs",
@@ -52,6 +16,34 @@
       "line": 10,
       "module": "Elixir.Exmeal.MealTest",
       "test": "test changeset/1 when all params are valid, returns a valid changeset"
+    },
+    {
+      "describe": "call/1",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/update_test.exs",
+      "line": 26,
+      "module": "Elixir.Exmeal.Meals.UpdateTest",
+      "test": "test call/1 when an invalid id is given, returns an error"
+    },
+    {
+      "describe": "call/1",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/update_test.exs",
+      "line": 10,
+      "module": "Elixir.Exmeal.Meals.UpdateTest",
+      "test": "test call/1 when a valid id is given, returns the meal"
+    },
+    {
+      "describe": "call/1",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/delete_test.exs",
+      "line": 26,
+      "module": "Elixir.Exmeal.Meals.DeleteTest",
+      "test": "test call/1 when an invalid id is given, returns an error"
+    },
+    {
+      "describe": "call/1",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal/meals/delete_test.exs",
+      "line": 10,
+      "module": "Elixir.Exmeal.Meals.DeleteTest",
+      "test": "test call/1 when a valid id is given, returns the meal"
     },
     {
       "describe": "all/0",
@@ -75,6 +67,20 @@
       "test": "test by_id/1 when a valid id is given, returns the meal"
     },
     {
+      "describe": "update/2",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
+      "line": 95,
+      "module": "Elixir.ExmealWeb.MealsControllerTest",
+      "test": "test update/2 when id exist, update the meal"
+    },
+    {
+      "describe": "delete/2",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
+      "line": 46,
+      "module": "Elixir.ExmealWeb.MealsControllerTest",
+      "test": "test delete/2 when id exist, delete the meal"
+    },
+    {
       "describe": "get/2",
       "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
       "line": 152,
@@ -89,27 +95,6 @@
       "test": "test create/2 when there are invalid params, returns an error"
     },
     {
-      "describe": "get/2",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
-      "line": 130,
-      "module": "Elixir.ExmealWeb.MealsControllerTest",
-      "test": "test get/2 when id exist, return the meal"
-    },
-    {
-      "describe": "delete/2",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
-      "line": 46,
-      "module": "Elixir.ExmealWeb.MealsControllerTest",
-      "test": "test delete/2 when id exist, delete the meal"
-    },
-    {
-      "describe": "update/2",
-      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
-      "line": 117,
-      "module": "Elixir.ExmealWeb.MealsControllerTest",
-      "test": "test update/2 when id not exist, return an error"
-    },
-    {
       "describe": "index/2",
       "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
       "line": 71,
@@ -117,11 +102,18 @@
       "test": "test index/2 returns all meals"
     },
     {
+      "describe": "get/2",
+      "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
+      "line": 130,
+      "module": "Elixir.ExmealWeb.MealsControllerTest",
+      "test": "test get/2 when id exist, return the meal"
+    },
+    {
       "describe": "update/2",
       "file": "/home/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/test/exmeal_web/controller/meals_controller_test.exs",
-      "line": 95,
+      "line": 117,
       "module": "Elixir.ExmealWeb.MealsControllerTest",
-      "test": "test update/2 when id exist, update the meal"
+      "test": "test update/2 when id not exist, return an error"
     },
     {
       "describe": "delete/2",
