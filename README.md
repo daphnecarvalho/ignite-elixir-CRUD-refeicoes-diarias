@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias/branch/main/graph/badge.svg?token=J09MH5ZCJU)](https://codecov.io/gh/daphnecarvalho/ignite-trilha-elixir-2021-crud-refeicoes-diarias)
 
-Instructions: [CRUD - Refeições diárias](https://www.notion.so/Desafio-01-CRUD-Refei-es-di-rias-d2911dcc69ee444faea70eec7796546c).
+Instructions: [CRUD - Refeições diárias](https://www.notion.so/Desafio-01-CRUD-Refei-es-di-rias-d2911dcc69ee444faea70eec7796546c) and [Testando a aplicação](https://www.notion.so/Desafio-02-Testando-a-aplica-o-435756cc4daf4c9ba490c12642dc5154).
 
 ## Base URL
 http://localhost:4000/
